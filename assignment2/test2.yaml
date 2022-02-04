@@ -1,0 +1,39 @@
+- clear:
+    run: ls
+
+- compile:
+    run: g++ -I include main.cpp -o blg223e_hw2
+    points: 1
+
+- check_case1:
+    run: ./blg223e_hw2  map2_friend1.txt  map2_friend2.txt
+    points: 1
+    script:
+        - expect: ".*FRIEND-1.*:.*CITY3.*CITY1.*CITY4.*CITY10.*CITY5.*CITY2.*CITY6.*CITY9.*CITY11.*CITY8.*CITY7.*" # timeout: 8
+        - expect: _EOF_
+    exit: 0 
+ 
+- check_case2:
+    run: ./blg223e_hw2  map2_friend1.txt  map2_friend2.txt
+    points: 1
+    script:
+        - expect: ".*FRIEND-2.*:.*CITY4.*CITY11.*CITY10.*CITY3.*CITY1.*CITY2.*CITY6.*CITY7.*CITY9.*CITY8.*:\\s+" # timeout: 8
+        - expect: _EOF_
+    exit: 0 
+
+- check_case3:
+    run: ./blg223e_hw2  map2_friend1.txt  map2_friend2.txt
+    points: 1
+    script:
+        - expect: ".*MEETING.*POINT.*:.*CITY6.*:\\s+" # timeout: 8
+        - expect: _EOF_
+    exit: 0 
+
+- check_case4:
+    run: ./blg223e_hw2  map2_friend1.txt  map2_friend2.txt
+    points: 1
+    script:
+        - expect: ".*TOTAL.*DURATION.*COST.*:.*4.*" # timeout: 8
+        - expect: _EOF_
+    exit: 0 
+
